@@ -1,0 +1,16 @@
+name: Test git action
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: Deploy using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USERNAME}}
+          key: ${{secret.KEY}}
+          port: 22
+          script: whoami
